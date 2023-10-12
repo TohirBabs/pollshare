@@ -2,7 +2,7 @@ import { Poll } from "./Poll";
 
 function App() {
   return (
-    <div className="w-screen p-2 bg-black min-h-screen flex justify-center items-center flex-col gap-8 py-8">
+    <div className="w-screen p-2 bg-black min-h-screen flex justify-center items-center flex-col gap-4 py-4">
       <p className="font-bold text-4xl">pollshare</p>
       <Poll
         theme="red"
