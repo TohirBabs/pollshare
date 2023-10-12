@@ -16,6 +16,9 @@ export const Poll = ({ question, options, votes, theme }) => {
               className="absolute h-full   z-0 top-0 rounded-full w-[47%] bg-black"
             ></div>
             <p className="z-10 relative">{option}</p>
+            <span className="z-10 h-14 top-0 flex items-center absolute right-4 text-xs">{`${Math.ceil(
+              (votes[index] / totalVotes) * 100
+            )}%`}</span>
           </button>
         ))}
       </div>
