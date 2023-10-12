@@ -2,7 +2,8 @@ import { Poll } from "./Poll";
 
 function App() {
   return (
-    <div className="w-screen bg-black min-h-screen flex justify-center items-center flex-col gap-8 py-8">
+    <div className="w-screen p-2 bg-black min-h-screen flex justify-center items-center flex-col gap-8 py-8">
+      <p className="font-bold text-4xl">pollshare</p>
       <Poll
         theme="red"
         question="are you a boy or a girl?"
@@ -27,6 +28,9 @@ function App() {
         options={["apple iphone", "google pixel"]}
         votes={[3, 7]}
       />
+      <div className="sticky bottom-5  bg-white rounded-full font-bold p-4 px-10 text-black">
+        🖋share poll
+      </div>
     </div>
   );
 }

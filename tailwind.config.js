@@ -7,6 +7,8 @@ export default {
     "bg-green-400",
     "bg-blue-400",
     "bg-gray-400",
+    "bg-emerald-400",
+    "bg-violet-400",
   ],
   theme: {
     extend: {},
