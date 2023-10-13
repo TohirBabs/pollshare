@@ -29,7 +29,7 @@ function App() {
         votes={[3, 7]}
       />
       <div className="sticky bottom-5 z-50  bg-white rounded-full font-bold p-4 px-10 text-black">
-        🖋share poll
+        🖋share a poll
       </div>
     </div>
   );

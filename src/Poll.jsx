@@ -21,7 +21,7 @@ export const Poll = ({ question, options, votes, theme, voted }) => {
             ></div>
             <p className="z-10 relative">{option}</p>
             {pollVotes[0] ? (
-              <span className="z-10 h-14 top-0 flex items-center absolute right-4 text-xs">{`${Math.ceil(
+              <span className="z-10 h-14 top-0 flex items-center absolute right-4 text-xs">{`${Math.round(
                 (votes[index] / totalVotes) * 100
               )}%`}</span>
             ) : null}
