@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Poll } from "./Poll";
+import { PollForm } from "./PollForm";
 
 function App() {
   const [modal, setmodal] = useState(false);
-  const [theme, settheme] = useState("red");
+
   return (
     <>
       <div className="w-screen p-2 bg-black min-h-screen flex justify-center items-center flex-col gap-4 py-4">
@@ -21,7 +22,7 @@ function App() {
           votes={[12, 66]}
         />
         <Poll
-          theme="yellow"
+          theme="red"
           question="who is the funnier nigerian comedian?"
           options={["basketmouth", "alibaba"]}
           votes={[24, 14]}
@@ -40,66 +41,7 @@ function App() {
           🖋share a poll
         </button>
       </div>
-      <div
-        style={{ height: `${modal ? "420px" : "0"}` }}
-        className="sticky transition-all duration-300 w-screen overflow-hidden  bottom-0 z-50 h-0 bg-white  font-bold  flex flex-col items-center justify-center  text-black"
-      >
-        <div className="flex gap-2 p-2 w-full justify-center max-w-[320px]">
-          <button
-            onClick={() => setmodal(false)}
-            className=" border-2 border-black rounded-full font-bold p-2 px-4"
-          >
-            back
-          </button>
-          <div className="h-full  border-2 border-black rounded-full flex items-center p-1 gap-1 justify-around">
-            <button
-              onClick={() => settheme("red")}
-              className="w-8 h-8 rounded-full bg-red-400"
-            ></button>
-            <button
-              onClick={() => settheme("yellow")}
-              className="w-8 h-8 rounded-full bg-yellow-400"
-            ></button>
-            <button
-              onClick={() => settheme("blue")}
-              className="w-8 h-8 rounded-full bg-blue-400"
-            ></button>
-            <button
-              onClick={() => settheme("gray")}
-              className="w-8 h-8 rounded-full bg-gray-400"
-            ></button>
-            <button
-              onClick={() => settheme("green")}
-              className="w-8 h-8 rounded-full bg-green-400"
-            ></button>
-          </div>
-        </div>
-        <div
-          className={` w-full max-w-[340px] m-2  bg-${theme}-400 rounded-[2.2rem] p-3 flex flex-col gap-5  `}
-        >
-          <textarea
-            className="resize text-2xl font-medium p-2 h-20 bg-transparent"
-            placeholder="poll question"
-          />
-          <div className="flex flex-col gap-3">
-            <input
-              placeholder="option 1"
-              className="w-full h-14  rounded-full bg-black  text-center relative overflow-hidden"
-            />
-            <input
-              placeholder="option 2"
-              className="w-full h-14  rounded-full bg-black  text-center relative overflow-hidden"
-            />
-          </div>
-        </div>
-
-        <button
-          onClick={() => setmodal(true)}
-          className=" bg-black rounded-full m-2 font-bold p-4 px-20 text-white"
-        >
-          share
-        </button>
-      </div>
+      <PollForm modal={modal} setmodal={setmodal} />
     </>
   );
 }
