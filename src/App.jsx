@@ -44,7 +44,7 @@ function App() {
         style={{ height: `${modal ? "420px" : "0"}` }}
         className="sticky transition-all duration-300 w-screen overflow-hidden  bottom-0 z-50 h-0 bg-white  font-bold  flex flex-col items-center  text-black"
       >
-        <div className="flex gap-2 p-3 w-full max-w-[360px]">
+        <div className="flex gap-2 p-2 w-full max-w-[360px]">
           <button
             onClick={() => setmodal(false)}
             className=" border-2 border-black rounded-full font-bold p-3 px-6"
@@ -75,7 +75,7 @@ function App() {
           </div>
         </div>
         <div
-          className={` w-full max-w-[360px]  bg-${theme}-400 rounded-[2.2rem] p-3 flex flex-col gap-5  `}
+          className={` w-full max-w-[360px] m-2  bg-${theme}-400 rounded-[2.2rem] p-3 flex flex-col gap-5  `}
         >
           <textarea
             className="resize text-2xl font-medium p-2 h-20 bg-transparent"
@@ -95,7 +95,7 @@ function App() {
 
         <button
           onClick={() => setmodal(true)}
-          className=" bg-black rounded-full m-4 font-bold p-4 px-20 text-white"
+          className=" bg-black rounded-full m-2 font-bold p-4 px-20 text-white"
         >
           share
         </button>
