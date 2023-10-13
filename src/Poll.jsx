@@ -5,7 +5,7 @@ export const Poll = ({ question, options, votes, theme, voted }) => {
   const totalVotes = votes[0] + votes[1];
   return (
     <div
-      className={`max-w-[360px] w-full bg-${theme}-400 rounded-[2.2rem] p-3 flex flex-col gap-5  `}
+      className={`max-w-[340px] w-full bg-${theme}-400 rounded-[2.2rem] p-3 flex flex-col gap-5  `}
     >
       <p className="text-2xl font-medium p-2">{question}</p>
       <div className="flex flex-col gap-3">

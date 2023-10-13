@@ -42,40 +42,40 @@ function App() {
       </div>
       <div
         style={{ height: `${modal ? "420px" : "0"}` }}
-        className="sticky transition-all duration-300 w-screen overflow-hidden  bottom-0 z-50 h-0 bg-white  font-bold  flex flex-col items-center  text-black"
+        className="sticky transition-all duration-300 w-screen overflow-hidden  bottom-0 z-50 h-0 bg-white  font-bold  flex flex-col items-center justify-center  text-black"
       >
-        <div className="flex gap-2 p-2 w-full max-w-[360px]">
+        <div className="flex gap-2 p-2 w-full justify-center max-w-[320px]">
           <button
             onClick={() => setmodal(false)}
-            className=" border-2 border-black rounded-full font-bold p-3 px-6"
+            className=" border-2 border-black rounded-full font-bold p-2 px-4"
           >
             back
           </button>
-          <div className="h-full flex-1 border-2 border-black rounded-full flex items-center p-2 gap-2 justify-between">
+          <div className="h-full  border-2 border-black rounded-full flex items-center p-1 gap-1 justify-around">
             <button
               onClick={() => settheme("red")}
-              className="w-10 h-10 rounded-full bg-red-400"
+              className="w-8 h-8 rounded-full bg-red-400"
             ></button>
             <button
               onClick={() => settheme("yellow")}
-              className="w-10 h-10 rounded-full bg-yellow-400"
+              className="w-8 h-8 rounded-full bg-yellow-400"
             ></button>
             <button
               onClick={() => settheme("blue")}
-              className="w-10 h-10 rounded-full bg-blue-400"
+              className="w-8 h-8 rounded-full bg-blue-400"
             ></button>
             <button
               onClick={() => settheme("gray")}
-              className="w-10 h-10 rounded-full bg-gray-400"
+              className="w-8 h-8 rounded-full bg-gray-400"
             ></button>
             <button
               onClick={() => settheme("green")}
-              className="w-10 h-10 rounded-full bg-green-400"
+              className="w-8 h-8 rounded-full bg-green-400"
             ></button>
           </div>
         </div>
         <div
-          className={` w-full max-w-[360px] m-2  bg-${theme}-400 rounded-[2.2rem] p-3 flex flex-col gap-5  `}
+          className={` w-full max-w-[340px] m-2  bg-${theme}-400 rounded-[2.2rem] p-3 flex flex-col gap-5  `}
         >
           <textarea
             className="resize text-2xl font-medium p-2 h-20 bg-transparent"
