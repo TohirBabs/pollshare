@@ -7,7 +7,7 @@ export const Poll = ({ question, options, votes, theme, voted }) => {
     <div
       className={`max-w-[340px] w-full bg-${theme}-400 rounded-[2.2rem] p-3 flex flex-col gap-5  `}
     >
-      <p className="text-2xl font-medium p-2">{question}</p>
+      {question && <p className="text-2xl font-medium p-2">{question}</p>}
       <div className="flex flex-col gap-3">
         {options.map((option, index) => (
           <button
