@@ -1,25 +1,34 @@
 import { useState } from "react";
 import { db } from "./firebase";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 
 export const PollForm = ({ modal, setmodal }) => {
   const themes = ["red", "blue", "green"];
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState({
+    id: "#",
     theme: "red",
     question: "",
-    option1: "",
-    option2: "",
+    opt1: "",
+    opt2: "",
+    vote1: 2,
+    vote2: 2,
   });
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
+  // Creates a reference to an auto-generated ID
 
   const handleSubmit = async () => {
     setIsLoading(true);
     try {
-      await addDoc(collection(db, "polls"), data);
+      const newPollRef = await addDoc(collection(db, "polls"), data).then(
+        (data) =>
+          updateDoc(doc(db, "polls", data.id), {
+            id: data.id,
+          })
+      );
       console.log("Data added to Firestore");
       setIsLoading(false);
 
@@ -67,7 +76,7 @@ export const PollForm = ({ modal, setmodal }) => {
         </div>
       </div>
       <div
-        className={` w-full max-w-[340px] m-2  bg-${data.theme}-400 rounded-[2.2rem] p-3 flex flex-col gap-5  `}
+        className={` w-full max-w-[340px] m-2  bg-${data.theme}-400 rounded-[2.2rem] p-2 flex flex-col gap-4`}
       >
         <textarea
           name="question"
@@ -76,11 +85,11 @@ export const PollForm = ({ modal, setmodal }) => {
           className="resize text-2xl font-medium text-white outline-none placeholder:text-white placeholder:text-opacity-70 p-2 h-20 bg-transparent"
           placeholder="poll question?(optional)"
         />
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-2">
           <input
             type="text"
-            name="option1"
-            value={data.option1}
+            name="opt1"
+            value={data.opt1}
             onChange={handleChange}
             required
             placeholder="option 1"
@@ -88,8 +97,8 @@ export const PollForm = ({ modal, setmodal }) => {
           />
           <input
             type="text"
-            name="option2"
-            value={data.option2}
+            name="opt2"
+            value={data.opt2}
             onChange={handleChange}
             required
             placeholder="option 2"
@@ -103,7 +112,7 @@ export const PollForm = ({ modal, setmodal }) => {
         disabled={isLoading}
         className=" bg-black rounded-full m-2 font-bold p-4 px-20 text-white"
       >
-        {isLoading ? "..." : "share"}
+        {isLoading ? "sharing ..." : "share"}
       </button>
     </form>
   );

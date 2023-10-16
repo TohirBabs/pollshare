@@ -8,6 +8,7 @@ import { useEffect } from "react";
 function App() {
   const [modal, setmodal] = useState(false);
   const [pollData, setpollData] = useState([]);
+  const [votedPolls, setvotedPolls] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,19 +25,38 @@ function App() {
     };
 
     fetchData();
-  }, []);
+  }, [modal]);
   console.log(pollData);
+
+  // localStorage.removeItem("userVotedPolls");
+  console.log(localStorage.getItem("userVotedPolls"));
+
+  useEffect(() => {
+    // Check if the item exists in localStorage
+    const userVotedPolls = JSON.parse(localStorage.getItem("userVotedPolls"));
+
+    if (userVotedPolls) {
+      // If it exists, set it in the component state
+      setvotedPolls(userVotedPolls);
+    } else {
+      // If it doesn't exist, create it in localStorage
+      localStorage.setItem("userVotedPolls", JSON.stringify({}));
+      setvotedPolls({});
+    }
+  }, []);
+  console.log(votedPolls);
+
   return (
     <>
       <div className="w-screen p-2 bg-black min-h-screen flex justify-center items-center flex-col gap-8 py-4">
         <p className="font-bold text-4xl">pollshare</p>
-        {pollData.map((poll, index) => (
+        {pollData.map((poll) => (
           <Poll
-            key={index}
-            theme={poll.theme || "red"}
-            question={poll.question}
-            options={[poll.option1, poll.option2]}
-            votes={[35, 16]}
+            key={poll.id}
+            polldata={poll}
+            prevVoted={votedPolls[poll.id] ? true : false}
+            votedPolls={votedPolls}
+            setvotedPolls={setvotedPolls}
           />
         ))}
 
@@ -47,7 +67,7 @@ function App() {
           🖋share a poll
         </button>
       </div>
-      <PollForm modal={modal} setmodal={setmodal} />
+      <PollForm modal={modal} setmodal={setmodal} prevVoted={false} />
     </>
   );
 }
